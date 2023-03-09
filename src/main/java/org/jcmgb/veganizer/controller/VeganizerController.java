@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://veganizeme-angular-app.s3-website-us-east-1.amazonaws.com")
 public class VeganizerController {
 
     @Autowired
