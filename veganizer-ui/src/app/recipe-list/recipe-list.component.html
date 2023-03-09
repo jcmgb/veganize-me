@@ -1,0 +1,16 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table *ngIf="recipes.length > 0" class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Recipe Title</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let recipe of recipes">
+        <td>{{ recipe.title }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
