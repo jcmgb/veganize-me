@@ -2,3 +2,4 @@
 **/build/
 !src/**/build/
 /e2e/src/test/resources/chromedriver/chromedriver.exe
+/e2e/out/test/resources/classpath.index
