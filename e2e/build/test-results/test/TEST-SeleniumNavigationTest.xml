@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SeleniumNavigationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-10T20:46:13" hostname="LAPTOP-PH4IJC1N" time="0.119">
+  <properties/>
+  <testcase name="navigateToVeganizeMe()" classname="SeleniumNavigationTest" time="0.119"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 109.0.5414.74 (e7c5703604daa9cc128ccf5a5d3e993513758913-refs/branch-heads/5414@{#1172}) on port 48346
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+[1678481172.506][WARNING]: This version of ChromeDriver has not been tested with Chrome version 110.
+Mar 10, 2023 2:46:12 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+[1678481177.275][WARNING]: Timed out connecting to Chrome, retrying...
+[1678481185.362][WARNING]: Timed out connecting to Chrome, retrying...
+]]></system-err>
+</testsuite>
