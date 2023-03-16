@@ -1,0 +1,21 @@
+{
+  "name": "veganize-me",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcmgb/veganize-me.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcmgb/veganize-me/issues"
+  },
+  "homepage": "https://github.com/jcmgb/veganize-me#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.31.2"
+  }
+}
