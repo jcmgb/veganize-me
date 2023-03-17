@@ -25,6 +25,28 @@ public class Recipe {
         return this.title;
     }
 
+    @Column(name = "ingredients")
+    private String ingredients;
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public String getIngredients() {
+        return this.ingredients;
+    }
+
+    @Column(name = "steps")
+    private String steps;
+
+    public void setSteps(String steps) {
+        this.steps = steps;
+    }
+
+    public String getSteps() {
+        return this.steps;
+    }
+
     @Column(name = "veganized")
     private String veganized;
 

@@ -1,0 +1,48 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #recipeForm="ngForm">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" [(ngModel)]="recipe.title"
+               class="form-control"
+               id="title"
+               name="title"
+               placeholder="Enter the recipe title"
+               required #title="ngModel">
+      </div>
+<!--      <div [hidden]="!title.pristine" class="alert alert-danger">Recipe title is required</div>-->
+
+      <div class="row">
+        <div class="col-6 form-group">
+          <label for="original">Ingredients list</label>
+          <textarea
+            [(ngModel)]="recipe.ingredients"
+            rows="15"
+            cols="10"
+            name="original"
+            class="form-control"
+            id="original"
+            placeholder="Enter the recipe ingredients list"
+          ></textarea>
+        </div>
+
+        <div class="col-6 form-group">
+          <label for="originalm">Steps</label>
+          <textarea
+            [(ngModel)]="recipe.steps"
+            rows="15"
+            cols="10"
+            name="originalm"
+            class="form-control"
+            id="originalm"
+            placeholder="Enter the recipe steps"
+          ></textarea>
+        </div>
+      </div>
+
+
+      <button type="submit" [disabled]="!recipeForm.form.valid"
+              class="btn btn-info">Veganize!</button>
+    </form>
+  </div>
+</div>
