@@ -9,12 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = {
-        "http://veganizeme-angular-app.s3-website-us-east-1.amazonaws.com",
-        "http://localhost:4200"
-})
-
-//@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class VeganizerController {
 
     @Autowired
