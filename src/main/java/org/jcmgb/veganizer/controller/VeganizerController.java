@@ -4,10 +4,7 @@ import org.jcmgb.veganizer.entity.Recipe;
 import org.jcmgb.veganizer.repository.RecipeRepository;
 import org.jcmgb.veganizer.service.VeganizerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,9 +22,10 @@ public class VeganizerController {
     List<Recipe> getAllRecipes() {
         return recipeRepository.findAll();
     }
-    @GetMapping("/veganize")
-    public Recipe veganize() {
-        return veganizerService.veganize("recipe content");
+
+    @PostMapping("/veganize")
+    public Recipe veganize(@RequestBody Recipe recipe) {
+        return veganizerService.veganize(recipe);
     }
 
     @GetMapping("/recipe")

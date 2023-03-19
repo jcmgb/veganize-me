@@ -11,10 +11,8 @@ public class VeganizerService {
     @Autowired
     RecipeRepository recipeRepository;
 
-    public Recipe veganize(String content) {
-        Recipe recipe = new Recipe();
-        recipe.setVeganized("veganized recipe");
-        recipe.setTitle("Test recipe");
+    public Recipe veganize(Recipe recipe) {
+        recipe.setVeganized("vegan content");
         recipe.setCount(0);
 
         recipeRepository.save(recipe);
