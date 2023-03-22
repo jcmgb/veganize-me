@@ -1,4 +1,4 @@
-.gradle
+.gradle/**
 **/build/
 !src/**/build/
 /e2e/src/test/resources/chromedriver/chromedriver.exe

@@ -1,48 +1,77 @@
-<div class="card my-5">
-  <div class="card-body">
+<div class="card my-5" style="justify-content: center">
+  <div *ngIf="!veganized" class="card-body">
     <form (ngSubmit)="onSubmit()" #recipeForm="ngForm">
       <div class="form-group">
         <label for="title">Title</label>
+        <label [hidden]="!title.pristine && !(title.control.value.length == 0)" style="color: red; font-size: larger"> *</label>
         <input type="text" [(ngModel)]="recipe.title"
                class="form-control"
                id="title"
-               name="title"
+               name="title"maxlength="25"
                placeholder="Enter the recipe title"
                required #title="ngModel">
       </div>
-<!--      <div [hidden]="!title.pristine" class="alert alert-danger">Recipe title is required</div>-->
 
       <div class="row">
         <div class="col-6 form-group">
-          <label for="original">Ingredients list</label>
+          <label for="ingredients">Ingredients list</label>
+          <label [hidden]="!ingredients.pristine && !(ingredients.control.value.length == 0)" style="color: red; font-size: larger"> *</label>
           <textarea
             [(ngModel)]="recipe.ingredients"
             rows="15"
             cols="10"
-            name="original"
+            name="ingredients"
             class="form-control"
-            id="original"
-            placeholder="Enter the recipe ingredients list"
+            id="ingredients"
+            placeholder={{ingredientsPlaceholder}}
+            style="font-style: italic"
+            required #ingredients="ngModel"
           ></textarea>
         </div>
 
         <div class="col-6 form-group">
-          <label for="originalm">Steps</label>
+          <label for="steps">Steps</label>
           <textarea
             [(ngModel)]="recipe.steps"
             rows="15"
             cols="10"
-            name="originalm"
+            name="steps"
             class="form-control"
-            id="originalm"
+            id="steps"
             placeholder="Enter the recipe steps"
           ></textarea>
         </div>
       </div>
-
-
       <button type="submit" [disabled]="!recipeForm.form.valid"
               class="btn btn-info">Veganize!</button>
     </form>
+  </div>
+  <div *ngIf="veganized" style="margin-top: 15px">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">{{recipe.title}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>{{ recipe.veganized }}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="row" style="margin-bottom: 15px">
+      <div class="col">
+        <button id="copyRecipe" type="submit" [cdkCopyToClipboard]="copyRecipe()"
+                class="btn btn-info">Copy Recipe
+        </button>
+      </div>
+      <div class="col">
+        <button (click)="veganizeRecipe()" id="another" type="submit"
+                class="btn btn-info">Veganize Another Recipe
+        </button>
+      </div>
+    </div>
+
   </div>
 </div>
