@@ -3,15 +3,16 @@
     <form (ngSubmit)="onSubmit()" #recipeForm="ngForm">
       <div class="form-group">
         <label for="title">Title</label>
-        <label [hidden]="!title.pristine && !(title.control.value.length == 0)" style="color: red; font-size: larger"> *</label>
+        <label [hidden]="!title.pristine && !(title.control.value.length == 0) && !isDuplicate(title.control.value)"
+               style="color: red; font-size: larger"> *</label>
         <input type="text" [(ngModel)]="recipe.title"
                class="form-control"
                id="title"
-               name="title"maxlength="25"
+               name="title" maxlength="25"
                placeholder="Enter the recipe title"
                required #title="ngModel">
+        <label [hidden]="!isDuplicate((title.control.value))" style="color: red">A veganized recipe with that title already exists</label>
       </div>
-
       <div class="row">
         <div class="col-6 form-group">
           <label for="ingredients">Ingredients list</label>
@@ -28,7 +29,6 @@
             required #ingredients="ngModel"
           ></textarea>
         </div>
-
         <div class="col-6 form-group">
           <label for="steps">Steps</label>
           <textarea
@@ -59,7 +59,6 @@
       </tr>
       </tbody>
     </table>
-
     <div class="row" style="margin-bottom: 15px">
       <div class="col">
         <button id="copyRecipe" type="submit" [cdkCopyToClipboard]="copyRecipe()"
@@ -72,6 +71,5 @@
         </button>
       </div>
     </div>
-
   </div>
 </div>

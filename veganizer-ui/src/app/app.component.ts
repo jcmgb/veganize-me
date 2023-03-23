@@ -1,5 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
-import {RecipeFormComponent} from './recipe-form/recipe-form.component';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +6,5 @@ import {RecipeFormComponent} from './recipe-form/recipe-form.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
   title = 'Veganize Me!';
 }

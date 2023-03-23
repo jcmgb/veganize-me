@@ -1,6 +1,7 @@
 package org.jcmgb.veganizer.service;
 
 import org.jcmgb.veganizer.entity.Recipe;
+import org.jcmgb.veganizer.exception.DuplicateValueException;
 import org.jcmgb.veganizer.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,10 @@ public class VeganizerService {
     RecipeRepository recipeRepository;
 
     public Recipe veganize(Recipe recipe) {
+        if (null != recipeRepository.findByTitle(recipe.getTitle())) {
+            throw new DuplicateValueException("A veganized recipe with that title already exists");
+        }
+
         recipe.setVeganized("vegan content");
         recipe.setCount(0);
 
