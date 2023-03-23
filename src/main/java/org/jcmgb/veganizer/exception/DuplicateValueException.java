@@ -1,4 +1,4 @@
-package com.shortenlinkapp.exception;
+package org.jcmgb.veganizer.exception;
 
 public class DuplicateValueException extends RuntimeException {
     public DuplicateValueException(String message) {

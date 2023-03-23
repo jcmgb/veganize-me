@@ -1,4 +1,4 @@
-package com.hebinterview.demomgb.exception;
+package org.jcmgb.veganizer.exception;
 
 import org.springframework.http.HttpStatus;
 
