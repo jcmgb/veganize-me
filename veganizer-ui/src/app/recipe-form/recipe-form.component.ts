@@ -35,6 +35,7 @@ export class RecipeFormComponent implements OnInit {
 
   onSubmit() {
     this.attemptedTitle = this.recipe.title;
+    this.isTitleUnique = true;
     this.recipeService.save(this.recipe).subscribe(
       result => {
       this.veganized = true;
@@ -45,13 +46,11 @@ export class RecipeFormComponent implements OnInit {
         this.isTitleUnique = false;
       }
       throw 'Error in source. Details: ' + error;
-    })
+    });
   }
 
   public isDuplicate(formTitle: string): boolean {
-    let check =  (!this.attemptedTitle || !formTitle) ? false :
-      (this.attemptedTitle === formTitle) ? true  : false;
-    return check;
+    return (!this.isTitleUnique && this.attemptedTitle === formTitle) ? true : false;
   }
 
   public veganizeRecipe(): void {
