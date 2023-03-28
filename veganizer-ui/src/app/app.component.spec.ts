@@ -1,8 +1,21 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import {RecipeService} from './service/recipe-service.service';
+
+import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
+import {TestBedInitializer} from "../../test-bed-init";
+
+import '@angular/compiler';
 
 describe('AppComponent', () => {
+
+  let TestBed;
+
+  beforeAll(() => {
+    TestBed = TestBedInitializer.getTestBed();
+  });
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
@@ -10,6 +23,9 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent
+      ],
+      providers: [
+        RecipeService
       ],
     }).compileComponents();
   });
