@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class VeganizerController {
+public class RecipeController {
 
     @Autowired
     VeganizerService veganizerService;
