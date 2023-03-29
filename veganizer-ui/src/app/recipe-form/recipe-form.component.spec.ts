@@ -2,9 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RecipeFormComponent } from './recipe-form.component';
 import {RouterTestingModule} from '@angular/router/testing';
-import {AppComponent} from '../app.component';
-import {RecipeService} from '../service/recipe-service.service';
+import {RecipeService} from '../service/recipe.service';
 import {HttpClient, HttpHandler} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ClipboardModule} from "@angular/cdk/clipboard";
 
 describe('RecipeFormComponent', () => {
 
@@ -14,10 +15,13 @@ describe('RecipeFormComponent', () => {
   beforeEach(async () => {
       await TestBed.configureTestingModule({
         imports: [
-          RouterTestingModule
+          RouterTestingModule,
+          FormsModule,
+          ReactiveFormsModule,
+          ClipboardModule
         ],
         declarations: [
-          AppComponent
+          RecipeFormComponent
         ],
         providers: [
           RecipeService,

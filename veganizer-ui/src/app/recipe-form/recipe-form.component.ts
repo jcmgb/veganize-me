@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Recipe} from '../model/recipe';
 import {ActivatedRoute, Router} from '@angular/router';
-import {RecipeService} from '../service/recipe-service.service';
+import {RecipeService} from '../service/recipe.service';
 
 @Component({
   selector: 'app-recipe-form',

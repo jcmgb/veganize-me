@@ -1,5 +1,5 @@
 <div class="card my-5" style="justify-content: center">
-  <div *ngIf="!veganized" class="card-body">
+  <div [hidden]="veganized" class="card-body">
     <form (ngSubmit)="onSubmit()" #recipeForm="ngForm">
       <div class="form-group">
         <label for="title">Title</label>
@@ -46,7 +46,7 @@
               class="btn btn-info">Veganize!</button>
     </form>
   </div>
-  <div *ngIf="veganized" style="margin-top: 15px">
+  <div [hidden]="!veganized" style="margin-top: 15px">
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
       <tr>
