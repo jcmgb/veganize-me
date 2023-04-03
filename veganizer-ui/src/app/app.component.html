@@ -6,15 +6,19 @@
           <h2 class="card-title text-center text-white py-3">{{ title }}</h2>
           <ul class="text-center list-inline py-3">
             <li class="list-inline-item">
-              <a routerLink="/recipes" class="btn btn-info">Veganized Recipes</a>
+              <a routerLink="/recipes" (click)="loadAllRecipes()" class="btn btn-info">Veganized Recipes</a>
             </li>
             <li class="list-inline-item">
-              <a routerLink="/veganize" class="btn btn-info">New Recipes</a>
+              <a routerLink="/veganize" (click)="veganizeNewRecipe()" class="btn btn-info">Veganize A Recipe</a>
             </li>
           </ul>
         </div>
       </div>
       <router-outlet></router-outlet>
+
+      <!-- Instatiate hidden child components so that ViewChild has access to them -->
+      <app-recipe-list [hidden]="true" #recipeListChild></app-recipe-list>
+      <app-recipe-form [hidden]="true" #recipeFormChild></app-recipe-form>
     </div>
   </div>
 </div>

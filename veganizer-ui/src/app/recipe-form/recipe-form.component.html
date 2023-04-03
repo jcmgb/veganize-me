@@ -1,7 +1,7 @@
 <div class="card my-5" style="justify-content: center">
   <div [hidden]="veganized" class="card-body">
     <form (ngSubmit)="onSubmit()" #recipeForm="ngForm">
-      <div class="form-group">
+      <div>
         <label for="title">Title</label>
         <label [hidden]="!title.pristine && !(title.control.value.length == 0) && !isDuplicate(title.control.value)"
                style="color: red; font-size: larger"> *</label>
@@ -14,7 +14,7 @@
         <label [hidden]="!isDuplicate((title.control.value))" style="color: red">A veganized recipe with that title already exists</label>
       </div>
       <div class="row">
-        <div class="col-6 form-group">
+        <div class="col-6">
           <label for="ingredients">Ingredients list</label>
           <label [hidden]="!ingredients.pristine && !(ingredients.control.value.length == 0)" style="color: red; font-size: larger"> *</label>
           <textarea
@@ -29,7 +29,7 @@
             required #ingredients="ngModel"
           ></textarea>
         </div>
-        <div class="col-6 form-group">
+        <div class="col-6">
           <label for="steps">Steps</label>
           <textarea
             [(ngModel)]="recipe.steps"
@@ -55,7 +55,15 @@
       </thead>
       <tbody>
       <tr>
-        <td>{{ recipe.veganized }}</td>
+        <div style="font-style: italic">Ingredients:</div>
+        <div *ngFor="let line of veganizedContent">
+          {{line}}
+        </div>
+        <br>
+        <div style="font-style: italic">Procedure:</div>
+        <div *ngFor="let line of recipeSteps">
+          {{line}}
+        </div>
       </tr>
       </tbody>
     </table>
