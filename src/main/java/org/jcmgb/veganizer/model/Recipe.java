@@ -7,7 +7,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 @lombok.Data
 @DynamoDBTable(tableName = "recipes")
-public class RecipeDDB {
+public class Recipe {
     private String id;
     private String title;
     private String ingredients;
@@ -15,10 +15,10 @@ public class RecipeDDB {
     private String veganized;
     private int count;
 
-    public RecipeDDB() {
+    public Recipe() {
     }
 
-    public RecipeDDB(String title, String ingredients, String steps) {
+    public Recipe(String title, String ingredients, String steps) {
         this.title = title;
         this.ingredients = ingredients;
         this.steps = steps;

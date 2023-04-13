@@ -6,7 +6,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 @DynamoDBTable(tableName = "substitutions")
-public class SubstitutionDDB {
+public class Substitution {
     private String id;
     private String ingredient1;
     private String ingredient2;
@@ -14,10 +14,10 @@ public class SubstitutionDDB {
     private String category;
     private String notes;
 
-    public SubstitutionDDB() {
+    public Substitution() {
     }
 
-    public SubstitutionDDB(String title, String ingredient2, String vegansub, String notes, String category) {
+    public Substitution(String title, String ingredient2, String vegansub, String notes, String category) {
         this.ingredient1 = title;
         this.ingredient2 = ingredient2;
         this.vegansub = vegansub;

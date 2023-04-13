@@ -1,11 +1,10 @@
 package org.jcmgb.veganizer.service;
 
 import org.jcmgb.veganizer.exception.DuplicateValueException;
-import org.jcmgb.veganizer.model.RecipeDDB;
-import org.jcmgb.veganizer.model.SubstitutionDDB;
-import org.jcmgb.veganizer.repositories.RecipeDDBRepository;
-import org.jcmgb.veganizer.repositories.SubstitutionDDBRepository;
-import org.jcmgb.veganizer.repository.RecipeRepository;
+import org.jcmgb.veganizer.model.Recipe;
+import org.jcmgb.veganizer.model.Substitution;
+import org.jcmgb.veganizer.repositories.RecipeRepository;
+import org.jcmgb.veganizer.repositories.SubstitutionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +17,12 @@ public class VeganizerService {
     RecipeRepository recipeRepository;
 
     @Autowired
-    SubstitutionDDBRepository substitutionDDBRepository;
+    SubstitutionRepository substitutionDDBRepository;
 
     @Autowired
-    RecipeDDBRepository recipeDDBRepository;
+    RecipeRepository recipeDDBRepository;
 
-    public RecipeDDB veganize(RecipeDDB recipe) {
+    public Recipe veganize(Recipe recipe) {
         if (! recipeDDBRepository.findByTitle(recipe.getTitle()).isEmpty()) {
             throw new DuplicateValueException("A veganized recipe with that title already exists");
         }
@@ -38,7 +37,7 @@ public class VeganizerService {
                     continue;
                 }
 
-                SubstitutionDDB substitution = substitutionDDBRepository.findByIngredient2ContainingAndCategory(sub, "any").isPresent() ?
+                Substitution substitution = substitutionDDBRepository.findByIngredient2ContainingAndCategory(sub, "any").isPresent() ?
                         substitutionDDBRepository.findByIngredient2ContainingAndCategory(sub, "any").get() : null;
 
                 if (null != substitution) {
@@ -60,8 +59,8 @@ public class VeganizerService {
         return recipe;
     }
 
-    public RecipeDDB getRecipeByTitle(String title) {
-        RecipeDDB recipe = new RecipeDDB();
+    public Recipe getRecipeByTitle(String title) {
+        Recipe recipe = new Recipe();
 
         if (recipeDDBRepository.findByTitle(title).isEmpty()) {
             recipe.setTitle(recipe.getTitle() + " read from Db");

@@ -1,5 +1,5 @@
 import org.jcmgb.veganizer.VeganizeMeApplication;
-import org.jcmgb.veganizer.entity.Recipe;
+import org.jcmgb.veganizer.model.Recipe;
 import org.jcmgb.veganizer.repository.RecipeRepository;
 import org.jcmgb.veganizer.service.VeganizerService;
 import org.json.JSONArray;
@@ -24,7 +24,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.atLeast;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(classes = VeganizeMeApplication.class)
