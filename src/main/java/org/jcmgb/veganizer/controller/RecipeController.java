@@ -1,6 +1,7 @@
 package org.jcmgb.veganizer.controller;
 
-import org.jcmgb.veganizer.entity.Recipe;
+import org.jcmgb.veganizer.model.RecipeDDB;
+import org.jcmgb.veganizer.repositories.RecipeDDBRepository;
 import org.jcmgb.veganizer.repository.RecipeRepository;
 import org.jcmgb.veganizer.service.VeganizerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +19,21 @@ public class RecipeController {
     @Autowired
     RecipeRepository recipeRepository;
 
+    @Autowired
+    RecipeDDBRepository recipeDDBRepository;
+
     @GetMapping("/recipes")
-    List<Recipe> getAllRecipes() {
-        return recipeRepository.findAll();
+    List<RecipeDDB> getAllRecipes() {
+        return recipeDDBRepository.findAll();
     }
 
     @PostMapping("/veganize")
-    public Recipe veganize(@RequestBody Recipe recipe) {
+    public RecipeDDB veganize(@RequestBody RecipeDDB recipe) {
         return veganizerService.veganize(recipe);
     }
 
     @GetMapping("/recipe")
-    public Recipe getRecipeByTitle(@RequestParam(required = true, name = "title") String title) {
+    public RecipeDDB getRecipeByTitle(@RequestParam(required = true, name = "title") String title) {
         return veganizerService.getRecipeByTitle(title);
     }
 }

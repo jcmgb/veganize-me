@@ -1,10 +1,11 @@
 package org.jcmgb.veganizer.service;
 
-import org.jcmgb.veganizer.entity.Recipe;
-import org.jcmgb.veganizer.entity.Substitution;
 import org.jcmgb.veganizer.exception.DuplicateValueException;
+import org.jcmgb.veganizer.model.RecipeDDB;
+import org.jcmgb.veganizer.model.SubstitutionDDB;
+import org.jcmgb.veganizer.repositories.RecipeDDBRepository;
+import org.jcmgb.veganizer.repositories.SubstitutionDDBRepository;
 import org.jcmgb.veganizer.repository.RecipeRepository;
-import org.jcmgb.veganizer.repository.SubstitutionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,10 +18,13 @@ public class VeganizerService {
     RecipeRepository recipeRepository;
 
     @Autowired
-    SubstitutionRepository substitutionRepository;
+    SubstitutionDDBRepository substitutionDDBRepository;
 
-    public Recipe veganize(Recipe recipe) {
-        if (null != recipeRepository.findByTitle(recipe.getTitle())) {
+    @Autowired
+    RecipeDDBRepository recipeDDBRepository;
+
+    public RecipeDDB veganize(RecipeDDB recipe) {
+        if (! recipeDDBRepository.findByTitle(recipe.getTitle()).isEmpty()) {
             throw new DuplicateValueException("A veganized recipe with that title already exists");
         }
 
@@ -34,10 +38,11 @@ public class VeganizerService {
                     continue;
                 }
 
-                Substitution substitution = substitutionRepository.findByIngredient1AndCategory(sub, "any");
+                SubstitutionDDB substitution = substitutionDDBRepository.findByIngredient2ContainingAndCategory(sub, "any").isPresent() ?
+                        substitutionDDBRepository.findByIngredient2ContainingAndCategory(sub, "any").get() : null;
 
                 if (null != substitution) {
-                    veganIngredientString = veganIngredientString + substitution.getVeganSub() + " ";
+                    veganIngredientString = veganIngredientString + substitution.getVegansub() + " ";
                 } else {
                     veganIngredientString = veganIngredientString + sub + " ";
                 }
@@ -51,23 +56,21 @@ public class VeganizerService {
 
         recipe.setVeganized(veganIngredientString);
         recipe.setCount(0);
-
-        recipeRepository.save(recipe);
+        recipeDDBRepository.save(recipe);
         return recipe;
     }
 
-    public Recipe getRecipeByTitle(String title) {
-        Recipe recipe;
-        recipe = recipeRepository.findByTitle(title);
+    public RecipeDDB getRecipeByTitle(String title) {
+        RecipeDDB recipe = new RecipeDDB();
 
-        if (null != recipe) {
+        if (recipeDDBRepository.findByTitle(title).isEmpty()) {
             recipe.setTitle(recipe.getTitle() + " read from Db");
         } else {
-            recipe = new Recipe();
+            recipe = recipeDDBRepository.findByTitle(title).get();
             recipe.setVeganized("new veganized content");
             recipe.setTitle(title);
             recipe.setCount(0);
-            recipeRepository.save(recipe);
+            recipeDDBRepository.save(recipe);
         }
 
         return recipe;
