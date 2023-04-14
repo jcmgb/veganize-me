@@ -1,4 +1,4 @@
-package org.jcmgb.veganizer.repositories;
+package org.jcmgb.veganizer.repository;
 
 import org.jcmgb.veganizer.model.Recipe;
 import org.socialsignin.spring.data.dynamodb.repository.EnableScan;

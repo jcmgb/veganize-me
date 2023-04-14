@@ -3,7 +3,7 @@ package org.jcmgb.veganizer.controller;
 import com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException;
 import org.jcmgb.veganizer.exception.DuplicateValueException;
 import org.jcmgb.veganizer.model.Substitution;
-import org.jcmgb.veganizer.repositories.SubstitutionRepository;
+import org.jcmgb.veganizer.repository.SubstitutionRepository;
 import org.jcmgb.veganizer.service.VeganizerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
