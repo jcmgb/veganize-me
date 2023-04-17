@@ -1,6 +1,7 @@
 import org.jcmgb.veganizer.VeganizeMeApplication;
 import org.jcmgb.veganizer.model.Recipe;
 import org.jcmgb.veganizer.repository.RecipeRepository;
+import org.jcmgb.veganizer.repository.SubstitutionRepository;
 import org.jcmgb.veganizer.service.VeganizerService;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,6 +22,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -37,6 +39,9 @@ public class VeganizerTest {
 
     @MockBean
     private RecipeRepository recipeRepository;
+
+    @MockBean
+    private SubstitutionRepository substitutionRepository;
 
     @SpyBean
     private VeganizerService veganizerService;
@@ -74,7 +79,7 @@ public class VeganizerTest {
 
     @Test
     public void duplicateTitleNegative() throws Exception {
-        Mockito.when(recipeRepository.findByTitle(any())).thenReturn(mockRecipes.get(1));
+        Mockito.when(recipeRepository.findByTitle(any())).thenReturn(Optional.of(mockRecipes.get(1)));
 
         JSONObject body = new JSONObject();
         body.put("title", mockRecipes.get(1).getTitle());

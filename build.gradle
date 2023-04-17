@@ -2,16 +2,16 @@ buildscript {
     repositories {
         mavenCentral()
     }
-    dependencies {
-        classpath 'org.flywaydb:flyway-mysql:9.16.0'
-    }
+//    dependencies {
+//        classpath 'org.flywaydb:flyway-mysql:9.16.0'
+//    }
 }
 
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.0.2'
     id 'io.spring.dependency-management' version '1.1.0'
-    id "org.flywaydb.flyway" version "9.16.0"
+//    id "org.flywaydb.flyway" version "9.16.0"
 }
 
 group 'org.jcmgb'
@@ -28,10 +28,10 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'mysql:mysql-connector-java'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+//    implementation 'mysql:mysql-connector-java'
+//    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.projectlombok:lombok:1.18.22'
-    implementation 'com.h2database:h2'
+//    implementation 'com.h2database:h2'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
@@ -45,18 +45,18 @@ dependencies {
 
 }
 
-flyway {
-    user='root'
-    password='MyN3wP4ssw0rd'
-    driver='com.mysql.cj.jdbc.Driver'
-
-    url = (project.hasProperty('devBuildConfig')) ?
-            'jdbc:mysql://localhost:3306/veganizer?useSSL=false' :
-            'jdbc:mysql://veganizerdb.cglbvo0sw77w.us-east-1.rds.amazonaws.com:3306/veganizer?useSSL=false'
-
-    cleanDisabled= (project.hasProperty('enableFlywayClean')) ? false : true;
-    baselineOnMigrate=true
-}
+//flyway {
+//    user='root'
+//    password='MyN3wP4ssw0rd'
+//    driver='com.mysql.cj.jdbc.Driver'
+//
+//    url = (project.hasProperty('devBuildConfig')) ?
+//            'jdbc:mysql://localhost:3306/veganizer?useSSL=false' :
+//            'jdbc:mysql://veganizerdb.cglbvo0sw77w.us-east-1.rds.amazonaws.com:3306/veganizer?useSSL=false'
+//
+//    cleanDisabled= (project.hasProperty('enableFlywayClean')) ? false : true;
+//    baselineOnMigrate=true
+//}
 
 tasks.named('test') {
     useJUnitPlatform()
