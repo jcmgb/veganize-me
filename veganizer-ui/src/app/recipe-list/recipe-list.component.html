@@ -1,6 +1,12 @@
 <div class="card my-5">
+
+  <div *ngIf="loading">
+    <div class="loader" style="margin-left: 50vh"></div>
+  </div>
+
   <div class="card-body">
-    <table *ngIf="recipes.length == 0" class="table table-bordered">
+
+    <table *ngIf="recipes.length == 0 && !loading" class="table table-bordered">
       <thead class="thead-dark">
       <tr>
         <th scope="col">No Veganized Recipes Found</th>

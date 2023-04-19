@@ -9,13 +9,17 @@ import {RecipeService} from '../service/recipe.service';
 })
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = [];
+  loading: boolean = true;
 
   constructor(private recipeService: RecipeService) {
   }
 
   ngOnInit() {
+    this.loading = true;
+
     this.recipeService.list().subscribe(data => {
       this.recipes = data;
+      this.loading = false;
     });
   }
 }

@@ -28,9 +28,10 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.projectlombok:lombok:1.18.22'
+
 //    implementation 'mysql:mysql-connector-java'
 //    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.projectlombok:lombok:1.18.22'
 //    implementation 'com.h2database:h2'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -40,9 +41,9 @@ dependencies {
     implementation 'com.github.derjust:spring-data-dynamodb:5.1.0'
     implementation 'com.amazonaws:aws-java-sdk-sts:1.12.440'
     implementation 'software.amazon.awssdk:secretsmanager:2.20.37'
+    implementation 'com.amazonaws:aws-java-sdk-secretsmanager:1.12.450'
 
-
-
+    implementation 'com.google.code.gson:gson'
 }
 
 //flyway {
