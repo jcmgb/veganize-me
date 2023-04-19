@@ -1,6 +1,6 @@
 package org.jcmgb.veganizer.controller;
 
-import org.jcmgb.veganizer.entity.Recipe;
+import org.jcmgb.veganizer.model.Recipe;
 import org.jcmgb.veganizer.repository.RecipeRepository;
 import org.jcmgb.veganizer.service.VeganizerService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,16 +1,15 @@
 package org.jcmgb.veganizer.repository;
 
-import org.jcmgb.veganizer.entity.Substitution;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.jcmgb.veganizer.model.Substitution;
+import org.socialsignin.spring.data.dynamodb.repository.EnableScan;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface SubstitutionRepository extends JpaRepository<Substitution, Long> {
-
-    Substitution findByIngredient1(String ingredient1);
+@EnableScan
+public interface SubstitutionRepository extends CrudRepository<Substitution, String> {
+    Optional<Substitution> findByIngredient2ContainingAndCategory(String ingredient2, String category);
     Substitution findByIngredient1AndCategory(String ingredient1, String category);
-    List<Substitution> findAllByIngredient1(String ingredient1);
-
-    Substitution findByIngredient2(String ingredient2);
-
+    List<Substitution> findAll();
 }

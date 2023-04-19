@@ -6,7 +6,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import java.io.IOException;
 
 public class TestBase {
-    public static String NAVIGATION_ROUTE = "http://veganizeme3.us-east-1.elasticbeanstalk.com/";
+    public static String NAVIGATION_ROUTE = "http://veganizeme4.us-east-1.elasticbeanstalk.com/";
     public static String RECIPES_ENDPOINT = "/recipes";
     public static String RECIPE_ENDPOINT = "/recipe";
     public static String VEGANIZE_ENDPOINT = "/veganize";

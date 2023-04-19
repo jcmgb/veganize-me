@@ -1,9 +1,15 @@
 package org.jcmgb.veganizer.repository;
 
-import org.jcmgb.veganizer.entity.Recipe;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.jcmgb.veganizer.model.Recipe;
+import org.socialsignin.spring.data.dynamodb.repository.EnableScan;
+import org.springframework.data.repository.CrudRepository;
 
-public interface RecipeRepository extends JpaRepository<Recipe, Long> {
+import java.util.List;
+import java.util.Optional;
 
-    Recipe findByTitle(String title);
+@EnableScan
+public interface RecipeRepository extends CrudRepository<Recipe, String> {
+    Optional<Recipe> findByTitle(String title);
+
+    List<Recipe> findAll();
 }

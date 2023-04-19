@@ -1,8 +1,8 @@
 package org.jcmgb.veganizer.service;
 
-import org.jcmgb.veganizer.entity.Recipe;
-import org.jcmgb.veganizer.entity.Substitution;
 import org.jcmgb.veganizer.exception.DuplicateValueException;
+import org.jcmgb.veganizer.model.Recipe;
+import org.jcmgb.veganizer.model.Substitution;
 import org.jcmgb.veganizer.repository.RecipeRepository;
 import org.jcmgb.veganizer.repository.SubstitutionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class VeganizerService {
     SubstitutionRepository substitutionRepository;
 
     public Recipe veganize(Recipe recipe) {
-        if (null != recipeRepository.findByTitle(recipe.getTitle())) {
+        if (! recipeRepository.findByTitle(recipe.getTitle()).isEmpty()) {
             throw new DuplicateValueException("A veganized recipe with that title already exists");
         }
 
@@ -34,10 +34,11 @@ public class VeganizerService {
                     continue;
                 }
 
-                Substitution substitution = substitutionRepository.findByIngredient1AndCategory(sub, "any");
+                Substitution substitution = substitutionRepository.findByIngredient2ContainingAndCategory(sub, "any").isPresent() ?
+                        substitutionRepository.findByIngredient2ContainingAndCategory(sub, "any").get() : null;
 
                 if (null != substitution) {
-                    veganIngredientString = veganIngredientString + substitution.getVeganSub() + " ";
+                    veganIngredientString = veganIngredientString + substitution.getVegansub() + " ";
                 } else {
                     veganIngredientString = veganIngredientString + sub + " ";
                 }
@@ -51,19 +52,17 @@ public class VeganizerService {
 
         recipe.setVeganized(veganIngredientString);
         recipe.setCount(0);
-
         recipeRepository.save(recipe);
         return recipe;
     }
 
     public Recipe getRecipeByTitle(String title) {
-        Recipe recipe;
-        recipe = recipeRepository.findByTitle(title);
+        Recipe recipe = new Recipe();
 
-        if (null != recipe) {
+        if (recipeRepository.findByTitle(title).isEmpty()) {
             recipe.setTitle(recipe.getTitle() + " read from Db");
         } else {
-            recipe = new Recipe();
+            recipe = recipeRepository.findByTitle(title).get();
             recipe.setVeganized("new veganized content");
             recipe.setTitle(title);
             recipe.setCount(0);
