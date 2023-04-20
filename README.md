@@ -22,3 +22,26 @@ Frameworks: Angular/Typescript (front end), Java on Spring Boot (back end)
   - Copy contents
   - Share link
 - Expansion of vegan sub ingredients
+________________________
+
+# How to build and run Veganize Me!
+## Locally
+- Start the back end: 
+  - From command line, run <div style="font-family: courier;">gradlew.bat -D'spring.profiles.active=local' bootRun</div>
+  - Endpoints are now accessible via PostMan from port :8080
+- Start the front end:
+  - Navigate to veganizer-ui
+  - From command line, run <div style="font-family: courier;">ng serve --configuration=development</div>
+  - From browser, navigate to http://localhost:4200
+
+## In prod
+- Application is running live at http://veganizeme-angular-app.s3-website-us-east-1.amazonaws.com/
+
+## Build and deploy to prod
+- Back end:
+  - From command line, run <div style="font-family: courier;">gradlew.bat clean build</div>
+  - Upload to AWS Elastic Beanstalk environment the jar file <div style="font-family: courier;">build/libs/veganize-me-1.0-SNAPSHOT.jar</div>
+- Front end:
+  - Navigate to veganizer-ui
+  - From command line, run <div style="font-family: courier;">ng build</div>
+  - Upload to application S3 bucket the files in dist/veganizer-ui
