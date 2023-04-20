@@ -31,18 +31,21 @@ ________________________
 
 ## Locally
 - Start the back end: 
-  - From command line, run <div style="font-family: courier;">gradlew.bat -D'spring.profiles.active=local' bootRun</div>
+  - From command line, run <code>gradlew.bat -D'spring.profiles.active=local' bootRun</code>
   - Endpoints are now accessible via PostMan from port :8080
 - Start the front end:
   - Navigate to veganizer-ui
-  - From command line, run <div style="font-family: courier;">ng serve --configuration=development</div>
+  - From command line, run 
+  <br><code>rm node-modules</code>
+  <br><code>npm install</code>
+  <br><code>ng serve --configuration=development</code>
   - From browser, navigate to http://localhost:4200
 
 ## Build and deploy to prod
 - Back end:
-  - From command line, run <div style="font-family: courier;">gradlew.bat clean build</div>
-  - Upload to AWS Elastic Beanstalk environment the jar file <div style="font-family: courier;">build/libs/veganize-me-1.0-SNAPSHOT.jar</div>
+  - From command line, run <code>gradlew.bat clean build</code>
+  - Upload to AWS Elastic Beanstalk environment the jar file <code>build/libs/veganize-me-1.0-SNAPSHOT.jar</code>
 - Front end:
   - Navigate to veganizer-ui
-  - From command line, run <div style="font-family: courier;">ng build</div>
+  - From command line, run <dode>ng build</code>
   - Upload to application S3 bucket the files in dist/veganizer-ui
