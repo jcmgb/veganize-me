@@ -1,6 +1,9 @@
 <div class="card my-5" style="justify-content: center">
   <div [hidden]="veganized" class="card-body">
     <form (ngSubmit)="onSubmit()" #recipeForm="ngForm">
+      <div style="margin-bottom: 10px">
+        <label style="background-color: #f50a0a; color: #ffffff; font-weight: bold">COMING SOON! Vegan ingredient substitutions</label>
+      </div>
       <div>
         <label for="title">Title</label>
         <label [hidden]="!title.pristine && !(title.control.value.length == 0) && !isDuplicate(title.control.value)"

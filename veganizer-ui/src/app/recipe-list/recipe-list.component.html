@@ -5,7 +5,11 @@
   </div>
 
   <div class="card-body">
-
+    <div *ngIf="!loading" style="margin-bottom: 10px">
+      <label style="background-color: #f50a0a; color: #ffffff; font-weight: bold">COMING SOON!
+        <br>- Search for a veganized recipe by title
+        <br>- Links to navigate to veganized recipe content</label>
+    </div>
     <table *ngIf="recipes.length == 0 && !loading" class="table table-bordered">
       <thead class="thead-dark">
       <tr>
