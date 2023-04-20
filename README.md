@@ -7,7 +7,7 @@ a team of two tech-savvy vegetarians who are passionate about vegan food, coding
 covering all the roles (PM, UI designer, developer, tester, DevOps, etc).
 
 Frameworks: Angular/Typescript (front end), Java on Spring Boot (back end)
-Data Store: AWS DynamoDB
+<br>Data Store: AWS DynamoDB
 
 # What the application currently does
 - Lists already veganized recipes by title.
