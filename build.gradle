@@ -63,4 +63,8 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-defaultTasks 'flywayMigrate'
+//defaultTasks 'flywayMigrate'
+
+bootRun {
+    systemProperties = System.properties
+}
