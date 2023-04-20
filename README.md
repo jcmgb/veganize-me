@@ -25,6 +25,10 @@ Frameworks: Angular/Typescript (front end), Java on Spring Boot (back end)
 ________________________
 
 # How to build and run Veganize Me!
+
+## In prod
+- Veganize Me! is running live at http://veganizeme-angular-app.s3-website-us-east-1.amazonaws.com/
+
 ## Locally
 - Start the back end: 
   - From command line, run <div style="font-family: courier;">gradlew.bat -D'spring.profiles.active=local' bootRun</div>
@@ -33,9 +37,6 @@ ________________________
   - Navigate to veganizer-ui
   - From command line, run <div style="font-family: courier;">ng serve --configuration=development</div>
   - From browser, navigate to http://localhost:4200
-
-## In prod
-- Application is running live at http://veganizeme-angular-app.s3-website-us-east-1.amazonaws.com/
 
 ## Build and deploy to prod
 - Back end:
